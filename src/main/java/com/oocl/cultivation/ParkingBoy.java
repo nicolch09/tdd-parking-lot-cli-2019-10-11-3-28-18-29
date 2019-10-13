@@ -10,14 +10,24 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        return new ParkingTicket();
+        return parkingLot.park(car);
     }
 
     public Car fetch(ParkingTicket ticket) {
-        return new Car();
+        return parkingLot.fetch(ticket);
     }
 
     public String getLastErrorMessage() {
         return lastErrorMessage;
+    }
+
+    public String isValidTicket(ParkingTicket parkingTicket, ParkingLot parkingLot) {
+        if(parkingTicket == null){
+            return lastErrorMessage = "Please provide your parking ticket.";
+        }
+        if(parkingLot.isValidTicket(parkingTicket) == null) {
+            return lastErrorMessage = "Unrecognized parking ticket.";
+        }
+        return "";
     }
 }
